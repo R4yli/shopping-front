@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Col, Form, Row, Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { FormContainer } from "../components/FormContainer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import authService from "../services/authService";
 
 export function Register() {
@@ -12,6 +12,8 @@ export function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +26,7 @@ export function Register() {
 
       try {
         await authService.register(data);
+        navigate("/login");
       } catch (error) {
         toast.error(error.toString());
       }
