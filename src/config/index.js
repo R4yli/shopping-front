@@ -2,7 +2,7 @@ import axios from "axios";
 import tokenService from "../services/tokenService";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://shopping-back-vhpj.onrender.com",
   headers: {
     "Content-Type": "application/json",
   },
